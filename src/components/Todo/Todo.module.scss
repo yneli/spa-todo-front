@@ -1,7 +1,7 @@
 .todo {
     padding-top: 50px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between
 };
 .maintext {
     display: flex;
@@ -9,5 +9,15 @@
 };
 .button {
     padding-top: 50px;
-    padding-left: 90px;
+    padding-left: 220px;
+}
+
+.right {
+    width: 50%;
+    padding-top: 140px;
+}
+
+.subtask {
+    display: flex;
+    align-items: center;
 }
