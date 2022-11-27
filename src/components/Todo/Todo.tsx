@@ -4,6 +4,7 @@ import { Dropdown } from "../Dropdown/Dropdown";
 import { DragAndDrop } from '../DragAndDrop/DragAndDrop';
 import Button from '@mui/material/Button';
 import { Selector } from '../Select/Selector';
+import { Comment } from '../Comment/Comment';
 
 export const Todo = () => {
     return <div className={styles.todo}>
@@ -87,6 +88,7 @@ export const Todo = () => {
         >{"- description"}</Typography>
         <Selector></Selector>
          </div>
+         <Comment></Comment>
        </div>
     </div>
 };

@@ -10,9 +10,9 @@ export const Test = () => {
     return <>
     <Layout header={<Header/>}>
         <Routes>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/" element={<Login/>}/>
             <Route path="/projects" element={<Projects/>}/>
-            <Route path="/" element={<Todo/>}/>
+            <Route path="/:id" element={<Todo/>}/>
             <Route path="/registration" element={<Registration/>}/>
         </Routes>
     </Layout>

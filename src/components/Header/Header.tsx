@@ -88,7 +88,7 @@ export const Header = () => {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Link to="/projects"><Typography textAlign="center">{page}</Typography></Link>
                   </MenuItem>
                 ))}
               </Menu>
@@ -113,13 +113,14 @@ export const Header = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Button
+                <Link style={{ color: "inherit", textDecoration: "inherit"}} to="./projects"><Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page}
                 </Button>
+                </Link>
               ))}
             </Box>
             <Box sx={{ flexGrow: 0 }}>

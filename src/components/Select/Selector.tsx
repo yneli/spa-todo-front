@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -21,7 +19,7 @@ export const Selector = () => {
         <MenuItem value="">
         </MenuItem>
         <MenuItem value={20}>done</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        <MenuItem value={30}>queue</MenuItem>
       </Select>
     </FormControl>
 
