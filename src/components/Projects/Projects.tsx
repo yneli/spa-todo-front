@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 export const Projects = () => {
     return <div className={styles.container}>
-      
         <Typography
               variant="h6"
               noWrap
@@ -30,6 +29,5 @@ export const Projects = () => {
                 <Dropdown></Dropdown>            
             </div>
         </div>
-    </div>
-    
+    </div>;
 };

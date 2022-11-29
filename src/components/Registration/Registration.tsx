@@ -1,12 +1,18 @@
 
 import React from 'react';
 import styles from "./Registration.module.scss";
-import { Paper, Typography, TextField, Button,Avatar } from '@mui/material';
+import { Paper, Typography, TextField, Button, Avatar } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchRegistraition } from '../../redux/userReducer';
+
 
 export const Registration = () => {
-
+  const dispatch = useDispatch();
+  const ontab = () => {
+    dispatch(fetchRegistraition());
+  }
   const { register, handleSubmit,  formState: {errors, isValid} } = useForm({
     defaultValues: {
       fullName: "",
@@ -14,25 +20,31 @@ export const Registration = () => {
     },
     mode: 'onChange',
   });
+  // @ts-ignore
+  const onSubmit = async (value) => {
 
-  const onSubmit = async  () => {
-//     const data = await dispatch(fetchRegister(value));
+  // @ts-ignore
 
-//     if(!data.payload){
-//       alert("не удалось зарегистрироваться")
-
-//     }
-//     if('token' in data.payload){
-//       window.localStorage.setItem('token', data.payload.token);
-//     }else {
-//       alert('не удалось')
-//     }
-//   };
-//   if(isAuth) {
-//     return <Navigate to="/"/>
-  }
-    return <>
+    const data = await dispatch(fetchRegistraition(value));
+    // @ts-ignore
     
+    // @ts-ignore
+    // if(!data.payload){
+    //   alert("не удалось зарегистрироваться")
+    // }
+    // // @ts-ignore
+    // if('token' in data.payload){
+    //   // @ts-ignore
+    //   window.localStorage.setItem('token', data.payload.token);
+    // }else {
+    //   alert('не удалось')
+    // }
+  };
+  // if(isAuth) {
+  //   return <Navigate to="/"/>
+  // }
+    return <>
+    <button onClick={ontab}>+++</button>
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
       Create account
