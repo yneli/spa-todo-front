@@ -1,7 +1,9 @@
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
-export const ProjectItems = ({title}: {title?: string, }) => {
+export const ProjectItems = ({title, url}: {title?: string, url?: string}) => {
     return <>
+    <Link to={`/todo/${url}`}>
     <Typography
               variant="h6"
               noWrap
@@ -17,5 +19,6 @@ export const ProjectItems = ({title}: {title?: string, }) => {
             >
               {title}
             </Typography>
+            </Link>
     </>;
 };

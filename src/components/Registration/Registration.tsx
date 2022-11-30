@@ -1,5 +1,3 @@
-
-import React from 'react';
 import styles from "./Registration.module.scss";
 import { Paper, Typography, TextField, Button, Avatar } from '@mui/material';
 import { useForm } from "react-hook-form";
@@ -7,9 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchRegistraition, selectIsAuth, setUsers } from '../../redux/userReducer';
 import { useSelector } from 'react-redux';
-import { useAppSelector } from '../../redux/hook';
 import axios from "./../../axios";
-
 
 export const Registration = () => {
   const dispatch = useDispatch();

@@ -1,10 +1,9 @@
-import React from 'react';
 import styles from "./Login.module.scss";
 import { Paper, Typography, TextField, Button } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { fetchRegistraition, selectIsAuth, setUsers } from '../../redux/userReducer';
+import { selectIsAuth, setUsers } from '../../redux/userReducer';
 import axios from "./../../axios";
 import { useDispatch } from 'react-redux';
 

@@ -9,13 +9,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 
-export const Dropdown = () => {
+export const Dropdown = ({btnName, btnClick}:{btnName?:string, btnClick?:any}) => {
   const [open, setOpen] = React.useState(false);
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  
   const handleClickOpen = () => {
     setOpen(true);
   }
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleCreate = () => {
+    setOpen(false);
+    btnClick({title: name,
+      description: description});
   };
     return <>
      <div>
@@ -34,6 +42,7 @@ export const Dropdown = () => {
             type="email"
             fullWidth
             variant="standard"
+            onChange={(e) => setName(e.target.value)}
           />
           <TextField
           id="standard-multiline-static"
@@ -42,11 +51,12 @@ export const Dropdown = () => {
           rows={4}
           variant="standard"
           fullWidth
+          onChange={(e) => setDescription(e.target.value)}
         />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Create</Button>
+          <Button onClick={handleCreate}>{btnName}</Button>
         </DialogActions>
       </Dialog>
     </div>

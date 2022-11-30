@@ -11,8 +11,8 @@ export const Test = () => {
     <Layout header={<Header/>}>
         <Routes>
             <Route path="/" element={<Login/>}/>
-            <Route path="/projects" element={<Projects/>}/>
-            <Route path="/:id" element={<Todo/>}/>
+            <Route path="/:id" element={<Projects/>}/>
+            <Route path="/todo/:id" element={<Todo/>}/>
             <Route path="/registration" element={<Registration/>}/>
         </Routes>
     </Layout>
