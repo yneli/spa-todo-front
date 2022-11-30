@@ -7,7 +7,7 @@ export const ProjectItems = ({title, url}: {title?: string, url?: string}) => {
     <Typography
               variant="h6"
               noWrap
-              component="a"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },

@@ -37,11 +37,9 @@ export const Projects = () => {
               PROJECTS:
             </Typography>
             <div className={styles.items}>
-            <Link to="/mytodo">
             {projItems?.map
             // @ts-ignore
             (item => <ProjectItems url={item._id} key={item._id} title={item.title}/>)}
-            </Link>
             <div className={styles.button}>
                 <Dropdown btnClick={fetchCreateProject} btnName={"Create project"}></Dropdown>            
             </div>

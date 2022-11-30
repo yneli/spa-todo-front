@@ -13,6 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
+import { useSelector } from 'react-redux';
+import { selectIsAuth } from '../../redux/userReducer';
 
 const pages = ['Projects'];
 const settings = ['Profile', 'Logout'];
@@ -20,7 +22,7 @@ const settings = ['Profile', 'Logout'];
 export const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  
+    const isAuth = useSelector(selectIsAuth);
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
       setAnchorElNav(event.currentTarget);
     };
@@ -54,7 +56,6 @@ export const Header = () => {
             >
               SPA-TODO
             </Typography>
-  
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
@@ -110,7 +111,7 @@ export const Header = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Link style={{ color: "inherit", textDecoration: "inherit"}} to="./projects"><Button
+                <Link key={page} style={{ color: "inherit", textDecoration: "inherit"}} to="./projects"><Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
@@ -121,7 +122,7 @@ export const Header = () => {
               ))}
             </Box>
             <Box sx={{ flexGrow: 0 }}>
-              {false ? <Tooltip title="Open settings">
+              {isAuth ? <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </IconButton>
