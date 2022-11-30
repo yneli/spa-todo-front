@@ -8,11 +8,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import { useAppDispatch } from '../../redux/hook';
 
 export const Dropdown = ({btnName, btnClick}:{btnName?:string, btnClick?:any}) => {
   const [open, setOpen] = React.useState(false);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const dispatch = useAppDispatch();
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,8 +24,8 @@ export const Dropdown = ({btnName, btnClick}:{btnName?:string, btnClick?:any}) =
   };
   const handleCreate = () => {
     setOpen(false);
-    btnClick({title: name,
-      description: description});
+    dispatch(btnClick({"title":name,
+    "description": description}))
   };
     return <>
      <div>

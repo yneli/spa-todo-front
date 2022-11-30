@@ -5,15 +5,19 @@ import { DragAndDrop } from '../DragAndDrop/DragAndDrop';
 import Button from '@mui/material/Button';
 import { Selector } from '../Select/Selector';
 import { Comment } from '../Comment/Comment';
+import { useParams } from 'react-router-dom';
 
 export const Todo = () => {
+  let id = useParams();
+  console.log(id);
+  
     return <div className={styles.todo}>
        <div className={styles.left}>
        <div className={styles.maintext}>
            <Typography
               variant="h4"
               noWrap
-              component="a"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -26,7 +30,7 @@ export const Todo = () => {
            <Typography
               variant="h6"
               noWrap
-              component="a"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -47,7 +51,7 @@ export const Todo = () => {
        <Typography
               variant="h6"
               noWrap
-              component="a"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -60,7 +64,7 @@ export const Todo = () => {
            <Typography
               variant="h6"
               noWrap
-              component="a"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -76,7 +80,7 @@ export const Todo = () => {
          <Typography
               variant="h6"
               noWrap
-              component="a"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },

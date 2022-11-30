@@ -38,12 +38,10 @@ export const Header = () => {
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            
             <Typography
               variant="h6"
               noWrap
-              component="a"
-              href="/"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -96,8 +94,7 @@ export const Header = () => {
             <Typography
               variant="h5"
               noWrap
-              component="a"
-              href=""
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },

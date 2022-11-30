@@ -22,6 +22,5 @@ export const Selector = () => {
         <MenuItem value={30}>queue</MenuItem>
       </Select>
     </FormControl>
-
     </>;
 };
