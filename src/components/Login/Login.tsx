@@ -3,8 +3,14 @@ import styles from "./Login.module.scss";
 import { Paper, Typography, TextField, Button } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { fetchRegistraition, selectIsAuth, setUsers } from '../../redux/userReducer';
+import axios from "./../../axios";
+import { useDispatch } from 'react-redux';
 
 export const Login = () => {
+  const isAuth = useSelector(selectIsAuth);
+  const dispatch = useDispatch();
   const { register, handleSubmit, setError, formState: {errors, isValid} } = useForm({
     defaultValues: {
       fullName: "",
@@ -12,21 +18,20 @@ export const Login = () => {
     },
     mode: 'onChange',
   });
-  const onSubmit = async () => {
-//     const data = await dispatch(fetchLogin(values));
-
-    
-//     if (!data.payload) {
-//       return alert('Не удалось авторизоваться!');
-//     }
-
-//     if ('token' in data.payload) {
-//       window.localStorage.setItem('token', data.payload.token);
-//     }
-//   };
-
-//   if (isAuth) {
-//     return <Navigate to="/" />;
+  const onSubmit = async (value:object) => {
+    const data = await axios.post("/auth/register", value);
+    if(!data.data){
+      alert("не удалось зарегистрироваться")
+    }
+    if('token' in data.data){
+      dispatch(setUsers(data.data))
+      window.localStorage.setItem('token', data.data.token);
+    }else {
+      alert('не удалось')
+    }
+  };
+   if(isAuth) {
+    return <Navigate to="/projects"/>
   }
   
     return <>
