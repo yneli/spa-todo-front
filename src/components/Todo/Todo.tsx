@@ -9,15 +9,19 @@ import { Comment } from '../Comment/Comment';
 import { useParams } from 'react-router-dom';
 import { fetchCreateTask, getAllTask } from '../../redux/reducer/taskReducer';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { getProjectTitle } from '../../redux/reducer/projectReducer';
 
 export const Todo = () => {
   let id = useParams();
-  console.log(id);
   const dispatch = useAppDispatch();
   const data = useAppSelector(state => state.taskReducer.projects);
+  const itemsProj = useAppSelector(state => state.taskReducer.task);
   React.useEffect(() => {
+    dispatch(getProjectTitle({id:id.id}));
     dispatch(getAllTask({id:id.id}));
   },[]);
+  const projTitle = useAppSelector(state => state.projectReducer.title);
+  
   
     return <div className={styles.todo}>
        <div className={styles.left}>
@@ -34,7 +38,7 @@ export const Todo = () => {
                 color: 'inherit',
                 textDecoration: 'none',
               }}
-            >{"Title"}</Typography>
+            >{projTitle?.title}</Typography>
            <Typography
               variant="h6"
               noWrap
@@ -47,7 +51,8 @@ export const Todo = () => {
                 color: 'inherit',
                 textDecoration: 'none',
               }}
-        >{"- description"}</Typography>
+        >{`- ${projTitle?.description
+        } `}</Typography>
        </div>
        <div className={styles.button}>
         <Dropdown id={id.id} btnClick={fetchCreateTask} btnName={'create task'}/>
