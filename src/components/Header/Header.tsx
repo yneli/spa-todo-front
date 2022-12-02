@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useSelector } from 'react-redux';
-import { selectIsAuth } from '../../redux/userReducer';
+import { selectIsAuth } from '../../redux/reducer/userReducer';
 
 const pages = ['Projects'];
 const settings = ['Profile', 'Logout'];

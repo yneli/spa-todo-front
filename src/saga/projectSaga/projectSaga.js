@@ -1,7 +1,7 @@
-import axios from "./../axios";
+import axios from "../../axios";
 import {put, takeEvery, call} from "redux-saga/effects"
-import { setProject } from "../redux/projectReducer";
-import { GET_PROJECT } from "../redux/projectReducer";
+import { setProject } from "../../redux/reducer/projectReducer";
+import { GET_PROJECT } from "../../redux/reducer/projectReducer";
 
 const fetchProjects = (obj) => axios.get('/myproject');
 

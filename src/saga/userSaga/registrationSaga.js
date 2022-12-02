@@ -1,6 +1,6 @@
-import axios from "./../axios";
+import axios from "../../axios";
 import {put, takeEvery, call} from "redux-saga/effects"
-import {FETCH_REGISTRATION, setUsers} from "../redux/userReducer";
+import {FETCH_REGISTRATION, setUsers} from "../../redux/reducer/userReducer";
 
 const fetchRegisrtation = async (obj) => {
     let data = await axios.post("/auth/register", obj.obj);

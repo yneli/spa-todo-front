@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "../../axios";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import React from "react";
-import { fetchCreateProject, getAllProject } from "../../redux/projectReducer";
+import { fetchCreateProject, getAllProject } from "../../redux/reducer/projectReducer";
 
 export const Projects = () => {
   const btnClick =  async ({title,description}:{title?:string, description?:string}) => {

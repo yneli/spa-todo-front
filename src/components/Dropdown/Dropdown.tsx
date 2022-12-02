@@ -10,7 +10,7 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { useAppDispatch } from '../../redux/hook';
 
-export const Dropdown = ({btnName, btnClick}:{btnName?:string, btnClick?:any}) => {
+export const Dropdown = ({btnName, btnClick, id}:{btnName?:string, btnClick?:any, id?:any}) => {
   const [open, setOpen] = React.useState(false);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
@@ -25,14 +25,14 @@ export const Dropdown = ({btnName, btnClick}:{btnName?:string, btnClick?:any}) =
   const handleCreate = () => {
     setOpen(false);
     dispatch(btnClick({"title":name,
-    "description": description}))
+    "description": description,"id":id}))
   };
     return <>
      <div>
      <Fab onClick={handleClickOpen} size="medium" color="primary" aria-label="add">
          <AddIcon /></Fab>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Create Project</DialogTitle>
+        <DialogTitle>{btnName}</DialogTitle>
         <DialogContent>
           <DialogContentText>
           </DialogContentText>

@@ -1,6 +1,6 @@
-import axios from "./../axios";
+import axios from "../../axios";
 import {put, takeEvery, call} from "redux-saga/effects"
-import {FETCH_USERS, setUsers} from "../redux/userReducer";
+import {FETCH_USERS, setUsers} from "../../redux/reducer/userReducer";
 
 const fetchUsersFromApi = () => axios.get('/auth/getme');
 

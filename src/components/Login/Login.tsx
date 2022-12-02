@@ -3,7 +3,7 @@ import { Paper, Typography, TextField, Button } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectIsAuth, setUsers } from '../../redux/userReducer';
+import { selectIsAuth, setUsers } from '../../redux/reducer/userReducer';
 import axios from "./../../axios";
 import { useDispatch } from 'react-redux';
 

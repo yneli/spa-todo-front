@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Todo.module.scss';
 import Typography from '@mui/material/Typography';
 import { Dropdown } from "../Dropdown/Dropdown";
@@ -6,10 +7,17 @@ import Button from '@mui/material/Button';
 import { Selector } from '../Select/Selector';
 import { Comment } from '../Comment/Comment';
 import { useParams } from 'react-router-dom';
+import { fetchCreateTask, getAllTask } from '../../redux/reducer/taskReducer';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
 
 export const Todo = () => {
   let id = useParams();
   console.log(id);
+  const dispatch = useAppDispatch();
+  const data = useAppSelector(state => state.taskReducer.projects);
+  React.useEffect(() => {
+    dispatch(getAllTask({id:id.id}));
+  },[]);
   
     return <div className={styles.todo}>
        <div className={styles.left}>
@@ -42,7 +50,7 @@ export const Todo = () => {
         >{"- description"}</Typography>
        </div>
        <div className={styles.button}>
-        <Dropdown/>
+        <Dropdown id={id.id} btnClick={fetchCreateTask} btnName={'create task'}/>
           </div>
           <DragAndDrop></DragAndDrop>
        </div>
