@@ -1,24 +1,42 @@
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import React, { useState } from "react";
 import uuid from "uuid/v4";
+import { useAppSelector } from "../../redux/hook";
 
-const itemsFromBackend = [
-    { id: uuid(), content: "First task" },
-  ];
-  const columnsFromBackend = {
-    [uuid()]: {
+export const DragAndDrop = ({id}) => {
+  const data = useAppSelector(state => state.taskReducer.projects);
+  const [columns, setColumns] = useState({
+    [1]: {
       name: "Queue",
-      items: itemsFromBackend
+      items: [],
     },
-    [uuid()]: {
+    [2]: {
       name: "Development",
-      items: []
+      items: [],
     },
-    [uuid()]: {
+    [3]: {
       name: "Done",
-      items: []
+      items: [],
     },
-  };
+  });
+  React.useEffect(() => {
+    setColumns({
+      [1]: {
+        name: "Queue",
+        items: data,
+      },
+      [2]: {
+        name: "Development",
+        items: [],
+      },
+      [3]: {
+        name: "Done",
+        items: [],
+      },
+    })
+  },[data]);
+
+  console.log();
   const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
     const { source, destination } = result;
@@ -55,8 +73,8 @@ const itemsFromBackend = [
       });
     }
   };
-export const DragAndDrop = () => {
-    const [columns, setColumns] = useState(columnsFromBackend);
+   
+
     return (
       <div style={{ display: "flex",  height: "100%" }}>
         <DragDropContext
@@ -72,6 +90,7 @@ export const DragAndDrop = () => {
                 }}
                 key={columnId}
               >
+
                 <h2>{column.name}</h2>
                 <div style={{ margin: 8 }}>
                   <Droppable droppableId={columnId} key={columnId}>
@@ -92,8 +111,8 @@ export const DragAndDrop = () => {
                           {column.items.map((item, index) => {
                             return (
                               <Draggable
-                                key={item.id}
-                                draggableId={item.id}
+                                key={item._id}
+                                draggableId={item._id}
                                 index={index}
                               >
                                 {(provided, snapshot) => {
@@ -114,7 +133,7 @@ export const DragAndDrop = () => {
                                         ...provided.draggableProps.style
                                       }}
                                     >
-                                      {item.content}
+                                      {item.title}
                                     </div>
                                   );
                                 }}

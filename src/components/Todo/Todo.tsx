@@ -14,14 +14,12 @@ import { getProjectTitle } from '../../redux/reducer/projectReducer';
 export const Todo = () => {
   let id = useParams();
   const dispatch = useAppDispatch();
-  const data = useAppSelector(state => state.taskReducer.projects);
-  const itemsProj = useAppSelector(state => state.taskReducer.task);
   React.useEffect(() => {
     dispatch(getProjectTitle({id:id.id}));
     dispatch(getAllTask({id:id.id}));
-  },[]);
+  },[id.id]);
   const projTitle = useAppSelector(state => state.projectReducer.title);
-  
+  const itemsProj = useAppSelector(state => state.taskReducer.task);
   
     return <div className={styles.todo}>
        <div className={styles.left}>
@@ -55,9 +53,9 @@ export const Todo = () => {
         } `}</Typography>
        </div>
        <div className={styles.button}>
-        <Dropdown id={id.id} btnClick={fetchCreateTask} btnName={'create task'}/>
+       <Dropdown id={id.id} btnClick={fetchCreateTask} btnName={'create task'}/>
           </div>
-          <DragAndDrop></DragAndDrop>
+       <DragAndDrop id={id.id}/>
        </div>
        <div className={styles.right}>
        <div className={styles.maintext}>
@@ -74,7 +72,7 @@ export const Todo = () => {
                 textDecoration: 'none',
               }}
             >{"Title"}</Typography>
-           <Typography
+       <Typography
               variant="h6"
               noWrap
               component="div"
@@ -90,7 +88,7 @@ export const Todo = () => {
        </div>
           <Button variant="contained">Subtask</Button>
          <div className={styles.subtask}>
-         <Typography
+       <Typography
               variant="h6"
               noWrap
               component="div"

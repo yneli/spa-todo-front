@@ -1,6 +1,6 @@
 const defaultState = {
-    projects: null,
-    task: null,
+    projects: [],
+    task: [],
 };
 
 export const SET_TASK = "SET_TASK";
